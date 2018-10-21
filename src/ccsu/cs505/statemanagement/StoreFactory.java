@@ -7,10 +7,10 @@
 package ccsu.cs505.statemanagement;
 
 /**
- * @ subscriber
- *   allow object to be attached to a state in the store so that the handle method
- *   get called whenever state value changes.
+ * @ StoreFactory
+ *   specifies a method for creating Store objects.
  */
-public interface Subscriber {
-    public void handleSubscritoin();
+
+public interface StoreFactory {
+    public Store createStore();
 }

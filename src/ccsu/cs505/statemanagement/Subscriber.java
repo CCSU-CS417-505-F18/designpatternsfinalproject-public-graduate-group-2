@@ -12,5 +12,5 @@ package ccsu.cs505.statemanagement;
  *   get called whenever state value changes.
  */
 public interface Subscriber {
-    public void handleSubscritoin();
+    public void handleSubscription();
 }

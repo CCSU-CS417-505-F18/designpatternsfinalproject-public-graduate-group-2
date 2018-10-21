@@ -44,3 +44,4 @@ public interface Store {
     public abstract <T> void addSubscription(String stateName,
                                              Subscriber subscriber);
 }
+
