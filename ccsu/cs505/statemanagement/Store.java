@@ -1,46 +1,39 @@
-/**
- *  @ package statemanagement
- *  contain functionality for global state management. It allow users to add
- * and manage global state as well as connect tothe global state so that components can
- * dynamically react to changes in the global state.
- */
 package ccsu.cs505.statemanagement;
 
 /**
- * @ store storethe global state and provide method for managing the global state
+ * Stores the global state and provides method for managing it.
  */
 public interface Store {
     /**
-     * @ addState() add a new variable to the state with an initial value
-     * @param stateName
-     * @param value
-     * @param <T>
+     * Adds a new variable to the state with an initial value.
+     * @param name the tag to associate with the new state
+     * @param value the initial value of the state
+     * @param <T> the type of the initial value
      */
-    public abstract <T> void addState(String stateName, T value);
+    public <T> void addState(String name, T value);
 
     /**
-     * @ getState() returns the value for the specified state
-     * @param stateName
-     * @param <T>
-     * @return
+     * Returns the value for the specified state
+     * @param name the tag associated with the desired state
+     * @param <T> the type of the expected value
+     * @return the value of the state with the specified tag
      */
-    public abstract <T> T getState(String stateName);
+    public <T> T getState(String name);
 
     /**
-     * @ setState() changes the specified state and call handle on all associate subscriber
-     * @param stateName
-     * @param value
-     * @param <T>
+     * Changes the specified state's value and calls handleSubscription()
+     * on all Subscribers associated with the state.
+     * @param name the tag associated with the desired state
+     * @param newValue the new value for the state
+     * @param <T> the type of the new value
      */
-    public abstract <T> void setState(String stateName, T value);
+    public <T> void setState(String name, T newValue);
 
     /**
-     * @ addSubscriber() add a specific subsriber to the specified state
-     *   the subscriber handle method whenever the state changes
-     * @param stateName
-     * @param subscriber
-     * @param <T>
+     * Adds a specific Subscriber to the specified state. The Subscriber's 
+     * handleSubscription() method will be called whenever the state changes.
+     * @param name the tag associated with the desired state
+     * @param subscriber the Subscriber to attach to the state
      */
-    public abstract <T> void addSubscription(String stateName,
-                                             Subscriber subscriber);
+    public void addSubscription(String name, Subscriber subscriber);
 }

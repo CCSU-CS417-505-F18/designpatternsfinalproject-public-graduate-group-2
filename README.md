@@ -6,6 +6,8 @@ dynamically based on this state. More specifically, you use this system to
 create a Store object, store global variable (global state) in this object, and
 give the store methods to call when certain state (specified by you) changes.
 We are open to adding additional functionality if it would be helpful.</p>
+<p>To see the Javadoc, go to the javadoc folder and open the index.heml file in
+a browser.</p>
 <h2>Why use it?</h2>
 <p>This is great for when you want you application to have different modes
 of some sort or if you want your app to react and behave differently when certain
@@ -52,7 +54,15 @@ Here's how to get started:
 	handleSubscritoin() method in all Subscribers attached to this state.</li>
 	<li>Add more state and more Subscribers and watch how much more reactive
 	your application is.</li>
-	<li>Also note that the store has a getState() method that returns the value
+</ol>
+<h2>Final Notes</h2>
+<ul>
+	<li>The store has a getState() method that returns the value
 	of the state with the specified String tag. Use this if you want your app to
 	behave differently based on the state's value.</li>
-</ol>
+	<li>You can attach a Subscriber to multipl states.</li>
+	<li>If you're unfamilliar tithe tye parameters (<T>), you may want to read up
+	a bit on Java generics. Go
+	<a href="https://docs.oracle.com/javase/tutorial/java/generics/index.html"
+	target="_blank">here</a></li> to learn more.
+</ul>
