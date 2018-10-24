@@ -62,7 +62,9 @@ Here's how to get started:
 	<li>The store has a getState() method that returns the value
 	of the state with the specified String tag. Use this if you want your app to
 	behave differently based on the state's value.</li>
-	<li>You can attach a Subscriber to multipl states.</li>
+	<li>You can attach one Subscriber to multiple states and multiple 
+	subscribers to one state.</li>
+	<li>Your app. can have multiple stores--to organize state.</li>
 	<li>If you're unfamilliar tithe tye parameters (<T>), you may want to read up
 	a bit on Java generics. Go
 	<a href="https://docs.oracle.com/javase/tutorial/java/generics/index.html"
