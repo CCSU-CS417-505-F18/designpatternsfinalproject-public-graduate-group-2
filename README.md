@@ -1,4 +1,6 @@
 <h1>CS505 State Management System</h1>
+<p>This project was made by Graduate Group 2, which consists of Dan
+Rollins, Sola Agboola, and Bart Szaro</p>
 <h2>What is it?</h2>
 <p>This is a system that allows you to create and manage global state for
 your application and have different parts of your application behave
