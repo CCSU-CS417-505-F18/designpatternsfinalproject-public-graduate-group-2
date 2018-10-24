@@ -10,7 +10,6 @@ public class StateManagement implements StoreFactory {
      * @return the created Store
      */
     public Store createStore() {
-        //not yet implemented
-        return null;
+        return new ConcreteStore();
     }
 }

@@ -47,7 +47,7 @@ Here's how to get started:
 	<li>Create at least one class implementing the Subscriber interface (or make
 	the class you're already in implement it). Make sure to implement the interface's
 	handleSubscription() method.</li>
-	<li>Use the store's addSubscriber() method to add subscription methods (i.e
+	<li>Use the store's addSubscription() method to add subscription methods (i.e
 	Subscriber.handleSubscription()) the state you just added. You'll need to pass the String
 	tag for the state and a Subscriber with the subscription method to be called when the
 	state changes.</li>
