@@ -65,7 +65,7 @@ Here's how to get started:
 	<li>You can attach one Subscriber to multiple states and multiple 
 	subscribers to one state.</li>
 	<li>Your app. can have multiple stores--to organize state.</li>
-	<li>If you're unfamilliar tithe tye parameters (<T>), you may want to read up
+	<li>If you're unfamiliar with type parameters (&lt;T&gt;), you may want to read up
 	a bit on Java generics. Go
 	<a href="https://docs.oracle.com/javase/tutorial/java/generics/index.html"
 	target="_blank">here</a></li> to learn more.
