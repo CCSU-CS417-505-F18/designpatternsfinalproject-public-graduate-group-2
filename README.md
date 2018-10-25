@@ -8,7 +8,7 @@ dynamically based on this state. More specifically, you use this system to
 create a Store object, store global variable (global state) in this object, and
 give the store methods to call when certain state (specified by you) changes.
 We are open to adding additional functionality if it would be helpful.</p>
-<p>To see the Javadoc, go to the javadoc folder and open the index.heml file in
+<p>To see the Javadoc, go to the javadoc folder and open the index.html file in
 a browser.</p>
 <h2>Why use it?</h2>
 <p>This is great for when you want you application to have different modes
