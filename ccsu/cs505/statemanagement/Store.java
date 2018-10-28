@@ -11,6 +11,14 @@ public interface Store {
      * @param <T> the type of the initial value
      */
     public <T> void addState(String name, T value);
+    
+    /**
+     * Removes the state with the specified name
+     * @param name the name of the state to remove
+     * @return true if the removal is successful, false if the state cannot
+     * be found
+     */
+    public boolean removeState(String name);
 
     /**
      * Returns the value for the specified state
@@ -36,4 +44,24 @@ public interface Store {
      * @param subscriber the Subscriber to attach to the state
      */
     public void addSubscription(String name, Subscriber subscriber);
+    
+    /**
+     * Removes the specified Subscriber from the state with the specified
+     * name. Uses the Subscriber's equals() method for comparison.
+     * @param name the name of the state the subscriber is attached to
+     * @param subscriber the subscriber to remove
+     * @return true if the removal is successful, false if the Subscriber
+     * it not found
+     */
+    public boolean removeSubscription(String name, Subscriber subscriber);
+    
+    
+    /**
+     * Removes the specified Subscriber all states.
+     * Uses the Subscriber's equals() method for comparison.
+     * @param subscriber the subscriber to remove
+     * @return true if the removals are successful, false if the Subscriber
+     * it not found
+     */
+    public boolean removeSubscription(Subscriber subscriber);
 }
