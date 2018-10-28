@@ -45,7 +45,7 @@ class ConcreteStore implements Store {
      * @param <T> the type of the initial value
      */
     @Override
-    public <T> void addState(String name, T value) {
+    public synchronized <T> void addState(String name, T value) {
         states.put(name, new State<T>(value));
     }
     
@@ -56,7 +56,7 @@ class ConcreteStore implements Store {
      * be found
      */
     @Override
-    public boolean removeState(String name) {
+    public synchronized boolean removeState(String name) {
         return states.remove(name) != null;
     }
 
@@ -67,7 +67,7 @@ class ConcreteStore implements Store {
      * @return the value of the state with the specified tag
      */
     @Override
-    public <T> T getState(String name) {
+    public synchronized <T> T getState(String name) {
         return (T) states.get(name).value;
     }
 
@@ -79,7 +79,7 @@ class ConcreteStore implements Store {
      * @param <T> the type of the new value
      */
     @Override
-    public <T> void setState(String name, T newValue) {
+    public synchronized <T> void setState(String name, T newValue) {
         State<T> state = (State<T>) states.get(name);
         state.value = newValue;
         state.callSubscribers();
@@ -92,7 +92,7 @@ class ConcreteStore implements Store {
      * @param subscriber the Subscriber to attach to the state
      */
     @Override
-    public void addSubscription(String name, Subscriber subscriber) {
+    public synchronized void addSubscription(String name, Subscriber subscriber) {
         states.get(name).addSubscriber(subscriber);
     }
     
@@ -105,7 +105,7 @@ class ConcreteStore implements Store {
      * it not found
      */
     @Override
-    public boolean removeSubscription(String name, Subscriber subscriber) {
+    public synchronized boolean removeSubscription(String name, Subscriber subscriber) {
         return states.get(name).removeSubscriber(subscriber);
     }
     
@@ -118,7 +118,7 @@ class ConcreteStore implements Store {
      * it not found
      */
     @Override
-    public boolean removeSubscription(Subscriber subscriber) {
+    public synchronized boolean removeSubscription(Subscriber subscriber) {
         Set<String> stateNames = states.keySet();
         boolean somethignRemoved = false;
         for (String name : stateNames) {
