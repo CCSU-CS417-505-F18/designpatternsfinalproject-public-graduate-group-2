@@ -21,7 +21,9 @@ public interface Store {
     public boolean removeState(String name);
 
     /**
-     * Returns the value for the specified state
+     * Returns the value for the specified state. Note: you will likely need
+     * to either typecast whatever is returned or pass the type you want via
+     * type arguments in order to use the returned object properly.
      * @param name the tag associated with the desired state
      * @param <T> the type of the expected value
      * @return the value of the state with the specified tag

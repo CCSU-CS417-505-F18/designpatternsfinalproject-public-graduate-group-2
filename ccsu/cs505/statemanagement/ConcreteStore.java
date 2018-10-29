@@ -6,9 +6,16 @@ import java.util.Set;
 
 /**
  * Stores the global state and provides method for managing it.
+ * Note to Instructor: the Object.equals() and Object.hashCode() are not
+ * overridden here because even though it is possible for two Stores to have
+ * HashMaps with the same keys and values, the HashMap's contents are not meant
+ * to identify the store. Two stores are meant to be interpreted as two
+ * DIFFERENT places to store information--to be used DIFFERENTLY by different
+ * parts of the app. The same can be said for the private State class within
+ * this store.
  */
 class ConcreteStore implements Store {
-    private class State<T> {
+    private static class State<T> {
         T value;
         private LinkedList<Subscriber> subscribers;
 
@@ -17,7 +24,7 @@ class ConcreteStore implements Store {
             subscribers = new LinkedList<Subscriber>();
         }
 
-        void addSubscriber(Subscriber<T> sub) {
+        void addSubscriber(Subscriber<? super T> sub) {
             subscribers.add(sub);
         }
         
@@ -61,7 +68,9 @@ class ConcreteStore implements Store {
     }
 
     /**
-     * Returns the value for the specified state
+     * Returns the value for the specified state. Note: you will likely need
+     * to either typecast whatever is returned or pass the type you want via
+     * type arguments in order to use the returned object properly.
      * @param name the tag associated with the desired state
      * @param <T> the type of the expected value
      * @return the value of the state with the specified tag
@@ -126,5 +135,18 @@ class ConcreteStore implements Store {
                     removeSubscription(name, subscriber);
         }
         return somethignRemoved;
+    }
+    
+    @Override
+    public String toString() {
+        Set<String> stateNames = states.keySet();
+        StringBuilder builder = new StringBuilder();
+        for (String name : stateNames) {
+            builder.append(name);
+            builder.append(": ");
+            builder.append(states.get(name).toString());
+            builder.append(",");
+        }
+        return builder.toString();
     }
 }
