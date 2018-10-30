@@ -1,4 +1,6 @@
 <h1>CS505 State Management System</h1>
+<p>This project was made by Graduate Group 2, which consists of Dan
+Rollins, Sola Agboola, and Bart Szaro</p>
 <h2>What is it?</h2>
 <p>This is a system that allows you to create and manage global state for
 your application and have different parts of your application behave
@@ -45,7 +47,7 @@ Here's how to get started:
 	<li>Create at least one class implementing the Subscriber interface (or make
 	the class you're already in implement it). Make sure to implement the interface's
 	handleSubscription() method.</li>
-	<li>Use the store's addSubscriber() method to add subscription methods (i.e
+	<li>Use the store's addSubscription() method to add subscription methods (i.e
 	Subscriber.handleSubscription()) the state you just added. You'll need to pass the String
 	tag for the state and a Subscriber with the subscription method to be called when the
 	state changes.</li>
@@ -60,8 +62,10 @@ Here's how to get started:
 	<li>The store has a getState() method that returns the value
 	of the state with the specified String tag. Use this if you want your app to
 	behave differently based on the state's value.</li>
-	<li>You can attach a Subscriber to multipl states.</li>
-	<li>If you're unfamilliar tithe tye parameters (<T>), you may want to read up
+	<li>You can attach one Subscriber to multiple states and multiple 
+	subscribers to one state.</li>
+	<li>Your app. can have multiple stores--to organize state.</li>
+	<li>If you're unfamiliar with type parameters (&lt;T&gt;), you may want to read up
 	a bit on Java generics. Go
 	<a href="https://docs.oracle.com/javase/tutorial/java/generics/index.html"
 	target="_blank">here</a></li> to learn more.
