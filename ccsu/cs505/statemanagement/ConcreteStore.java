@@ -131,8 +131,8 @@ class ConcreteStore implements Store {
         Set<String> stateNames = states.keySet();
         boolean somethignRemoved = false;
         for (String name : stateNames) {
-            somethignRemoved = somethignRemoved ||
-                    removeSubscription(name, subscriber);
+            somethignRemoved = removeSubscription(name, subscriber) ||
+                    somethignRemoved;
         }
         return somethignRemoved;
     }
