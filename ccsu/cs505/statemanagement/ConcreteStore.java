@@ -14,7 +14,7 @@ import java.util.Set;
  * this store.
  */
 class ConcreteStore implements Store {
-    private static class State<T> extends AbstractState<T> {
+    private static class State<T> extends GeneralState<T> {
         private T value;
 
         State(T value) {
@@ -24,10 +24,18 @@ class ConcreteStore implements Store {
         
         //the methods are public to match the observer pattern specification
         
+        /**
+         * gets the state's value
+         * @return the state's value
+         */
         public T getState() {
             return value;
         }
         
+        /**
+         * set's the state's value
+         * @param newValue the new value for the state
+         */
         public void setState(T newValue) {
             value = newValue;
             callSubscribers(newValue);
