@@ -1,6 +1,5 @@
 package ccsu.cs505.statemanagement;
 
-import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -15,27 +14,31 @@ import java.util.Set;
  * this store.
  */
 class ConcreteStore implements Store {
-    private static class State<T> {
-        T value;
-        private LinkedList<Subscriber> subscribers;
+    private static class State<T> extends GeneralState<T> {
+        private T value;
 
         State(T value) {
+            super();
             this.value = value;
-            subscribers = new LinkedList<Subscriber>();
-        }
-
-        void addSubscriber(Subscriber<? super T> sub) {
-            subscribers.add(sub);
         }
         
-        boolean removeSubscriber(Subscriber sub) {
-            return subscribers.remove(sub);
+        //the methods are public to match the observer pattern specification
+        
+        /**
+         * gets the state's value
+         * @return the state's value
+         */
+        public T getState() {
+            return value;
         }
-
-        void callSubscribers() {
-            for (Subscriber sub : subscribers) {
-                sub.handleSubscription(value);
-            }
+        
+        /**
+         * set's the state's value
+         * @param newValue the new value for the state
+         */
+        public void setState(T newValue) {
+            value = newValue;
+            callSubscribers(newValue);
         }
     }
 	
@@ -77,7 +80,7 @@ class ConcreteStore implements Store {
      */
     @Override
     public synchronized <T> T getState(String name) {
-        return (T) states.get(name).value;
+        return (T) states.get(name).getState();
     }
 
     /**
@@ -89,9 +92,7 @@ class ConcreteStore implements Store {
      */
     @Override
     public synchronized <T> void setState(String name, T newValue) {
-        State<T> state = (State<T>) states.get(name);
-        state.value = newValue;
-        state.callSubscribers();
+        ((State<T>) states.get(name)).setState(newValue);
     }
 
     /**
@@ -129,12 +130,12 @@ class ConcreteStore implements Store {
     @Override
     public synchronized boolean removeSubscription(Subscriber subscriber) {
         Set<String> stateNames = states.keySet();
-        boolean somethignRemoved = false;
+        boolean somethingRemoved = false;
         for (String name : stateNames) {
-            somethignRemoved = removeSubscription(name, subscriber) ||
-                    somethignRemoved;
+            somethingRemoved = removeSubscription(name, subscriber) ||
+                    somethingRemoved;
         }
-        return somethignRemoved;
+        return somethingRemoved;
     }
     
     @Override
@@ -145,7 +146,7 @@ class ConcreteStore implements Store {
             builder.append(name);
             builder.append(": ");
             builder.append(states.get(name).toString());
-            builder.append(",");
+            builder.append(", ");
         }
         return builder.toString();
     }
