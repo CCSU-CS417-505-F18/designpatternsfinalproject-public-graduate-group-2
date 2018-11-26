@@ -42,7 +42,7 @@ class ConcreteStore implements Store {
         }
     }
 	
-    HashMap<String, State<?>> states;
+    private HashMap<String, State<?>> states;
 
     ConcreteStore() {
         states = new HashMap<String, State<?>>();
