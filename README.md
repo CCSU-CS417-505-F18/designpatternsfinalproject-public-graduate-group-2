@@ -46,9 +46,12 @@ Here's how to get started:
 	value for that variable.</li>
 	<li>Create at least one class implementing the Subscriber interface (or make
 	the class you're already in implement it). Make sure to implement the interface's
-	handleSubscription() method.</li>
+	handleSubscription() method. <strong>IMPORTANT:</strong> make sure to specify the
+	generic type for the Subscriber interface. For example, if you're adding the subscriber
+	to a state (see next list item) that stores a File object, type "implements Subscriber&lt;File&gt;"
+	in the class's signiture.</li>
 	<li>Use the store's addSubscription() method to add subscription methods (i.e
-	Subscriber.handleSubscription()) the state you just added. You'll need to pass the String
+	Subscriber.handleSubscription()) to the state you just added. You'll need to pass the String
 	tag for the state and a Subscriber with the subscription method to be called when the
 	state changes.</li>
 	<li>Use the store's setState() method to update the state's value. You'll need
